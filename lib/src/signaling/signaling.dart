@@ -1,3 +1,4 @@
-export 'zego_signaling_plugin_defines.dart';
-export 'zego_signaling_plugin_enums.dart';
-export 'zego_signaling_plugin_interface.dart';
+export 'defines.dart';
+export 'enums.dart';
+export 'errors.dart';
+export 'interface.dart';
