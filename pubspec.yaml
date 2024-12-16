@@ -1,6 +1,6 @@
 name: zego_plugin_adapter
 description: ZegoCloud's plugin adapter, which a wraper for `zego_uikit` to use plugins, such as `zego_uikit_beauty_plugin` and `zego_uikit_signaling_plugin`
-version: 2.13.4
+version: 2.13.5
 homepage: https://www.zegocloud.com/
 
 environment:

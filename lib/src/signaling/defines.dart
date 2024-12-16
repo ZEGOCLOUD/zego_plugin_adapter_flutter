@@ -318,10 +318,12 @@ class ZegoSignalingPluginQuitInvitationResult {
 /// cancel invitation result
 class ZegoSignalingPluginCancelInvitationResult {
   const ZegoSignalingPluginCancelInvitationResult({
-    this.error,
+    required this.invitationID,
     required this.errorInvitees,
+    this.error,
   });
 
+  final String invitationID;
   final PlatformException? error;
   final List<String> errorInvitees;
 
@@ -334,9 +336,11 @@ class ZegoSignalingPluginCancelInvitationResult {
 /// response invitation result
 class ZegoSignalingPluginResponseInvitationResult {
   const ZegoSignalingPluginResponseInvitationResult({
+    required this.invitationID,
     this.error,
   });
 
+  final String invitationID;
   final PlatformException? error;
 
   @override
