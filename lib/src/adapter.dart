@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:zego_plugin_adapter/src/adapter.dart';
+import 'package:zego_plugin_adapter/src/services/adapter_service.dart';
 
 export 'beauty/beauty.dart';
 export 'callkit/callkit.dart';
@@ -18,21 +19,28 @@ class ZegoPluginAdapterImpl {
   };
 
   /// version
-  String getVersion() => 'zego_plugin_adapter: 2.13.5';
+  String getVersion() => 'zego_plugin_adapter: 2.13.6';
 
   /// install target plugins
   void installPlugins(List<IZegoUIKitPlugin> instances) {
     for (final item in instances) {
       final itemType = item.getPluginType();
       if (plugins[itemType] != null) {
-        debugPrint('plugin type:$itemType already exists '
-            '(${plugins[itemType].hashCode}), '
-            'will update plugin instance ${item.hashCode}');
+        ZegoAdapterLoggerService.logInfo(
+          'plugin type:$itemType already exists(${plugins[itemType].hashCode}), '
+          'will update plugin instance ${item.hashCode}',
+          tag: 'adapter',
+          subTag: 'install plugins',
+        );
       }
 
       plugins[itemType] = item;
-      debugPrint('plugin type:$itemType install '
-          '(${plugins[itemType].hashCode})');
+
+      ZegoAdapterLoggerService.logInfo(
+        'plugin type:$itemType install (${plugins[itemType].hashCode})',
+        tag: 'adapter',
+        subTag: 'install plugins',
+      );
     }
 
     pluginsInstallNotifier.value = plugins.keys.toList();
@@ -46,9 +54,18 @@ class ZegoPluginAdapterImpl {
         plugins.removeWhere((pluginType, plugin) {
           return itemType == pluginType;
         });
-        debugPrint('plugin type:$itemType uninstalled');
+
+        ZegoAdapterLoggerService.logInfo(
+          'plugin type:$itemType uninstalled',
+          tag: 'adapter',
+          subTag: 'uninstall plugins',
+        );
       } else {
-        debugPrint('plugin type:$itemType is not exists');
+        ZegoAdapterLoggerService.logInfo(
+          'plugin type:$itemType is not exists',
+          tag: 'adapter',
+          subTag: 'uninstall plugins',
+        );
       }
     }
 
@@ -59,7 +76,11 @@ class ZegoPluginAdapterImpl {
   ZegoSignalingPluginInterface? get signalingPlugin {
     final ret = plugins[ZegoUIKitPluginType.signaling];
     if (ret == null) {
-      debugPrint('signalingPlugin is null');
+      ZegoAdapterLoggerService.logInfo(
+        'signalingPlugin is null',
+        tag: 'adapter',
+        subTag: 'get plugin',
+      );
     }
     return ret! as ZegoSignalingPluginInterface;
   }
@@ -68,7 +89,11 @@ class ZegoPluginAdapterImpl {
   ZegoCallKitInterface? get callkit {
     final ret = plugins[ZegoUIKitPluginType.callkit];
     if (ret == null) {
-      debugPrint('callkit is null');
+      ZegoAdapterLoggerService.logInfo(
+        'callkit is null',
+        tag: 'adapter',
+        subTag: 'get plugin',
+      );
     }
     return ret! as ZegoCallKitInterface;
   }
@@ -77,14 +102,23 @@ class ZegoPluginAdapterImpl {
   ZegoBeautyPluginInterface? get beautyPlugin {
     final ret = plugins[ZegoUIKitPluginType.beauty];
     if (ret == null) {
-      debugPrint('beautyPlugin is null');
+      ZegoAdapterLoggerService.logInfo(
+        'beautyPlugin is null',
+        tag: 'adapter',
+        subTag: 'get plugin',
+      );
     }
     return ret! as ZegoBeautyPluginInterface;
   }
 
   /// get specified plugin instance
   IZegoUIKitPlugin? getPlugin(ZegoUIKitPluginType type) {
-    debugPrint('getPlugin: $type');
+    ZegoAdapterLoggerService.logInfo(
+      'target:$type, current plugins:$plugins',
+      tag: 'adapter',
+      subTag: 'get plugin',
+    );
+
     return plugins[type];
   }
 }
