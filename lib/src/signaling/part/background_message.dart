@@ -5,8 +5,9 @@ mixin ZegoSignalingPluginBackgroundMessageAPI {
   /// set Background Message Handler
   Future<ZegoSignalingPluginSetMessageHandlerResult>
       setBackgroundMessageHandler(
-    ZegoSignalingPluginZPNsBackgroundMessageHandler handler,
-  );
+    ZegoSignalingPluginZPNsBackgroundMessageHandler handler, {
+    String key = 'default',
+  });
 
   /// set Through Message Handler
   Future<ZegoSignalingPluginSetMessageHandlerResult> setThroughMessageHandler(
