@@ -2,6 +2,8 @@ part of '../interface.dart';
 
 /// @nodoc
 mixin ZegoSignalingPluginBackgroundMessageAPI {
+  Future<void> removeBackgroundMessageHandler({String key = ''});
+
   /// set Background Message Handler
   Future<ZegoSignalingPluginSetMessageHandlerResult>
       setBackgroundMessageHandler(
