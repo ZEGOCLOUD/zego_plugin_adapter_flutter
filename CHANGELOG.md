@@ -1,3 +1,7 @@
+## 2.13.7 
+
+- Support for additional listening offline message handler
+
 ## 2.13.6 
 
 - add some logs
