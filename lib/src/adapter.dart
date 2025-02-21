@@ -19,7 +19,7 @@ class ZegoPluginAdapterImpl {
   };
 
   /// version
-  String getVersion() => 'zego_plugin_adapter: 2.13.7';
+  String getVersion() => 'zego_plugin_adapter: 2.13.8';
 
   /// install target plugins
   void installPlugins(List<IZegoUIKitPlugin> instances) {

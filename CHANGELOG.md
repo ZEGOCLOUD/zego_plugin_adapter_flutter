@@ -1,3 +1,7 @@
+## 2.13.8
+
+- add API, removeBackgroundMessageHandler
+
 ## 2.13.7 
 
 - Support for additional listening offline message handler
