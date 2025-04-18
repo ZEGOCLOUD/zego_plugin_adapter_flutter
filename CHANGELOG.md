@@ -1,3 +1,7 @@
+## 2.13.9
+
+- Update zpns
+
 ## 2.13.8
 
 - add API, removeBackgroundMessageHandler
