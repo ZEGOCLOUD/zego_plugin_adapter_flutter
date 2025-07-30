@@ -5,7 +5,7 @@ mixin ZegoAdapterLoggerService {
   static bool isZegoLoggerInit = false;
 
   /// init log
-  Future<void> initLog({String folderName = 'uikit'}) async {
+  Future<void> initLog() async {
     if (isZegoLoggerInit) {
       return;
     }
@@ -26,8 +26,9 @@ mixin ZegoAdapterLoggerService {
               directoryStructure: DirectoryStructure.SINGLE_FILE_FOR_DAY,
               logTypesEnabled: ['device', 'network', 'errors'],
               logFileExtension: LogFileExtension.LOG,
-              logsWriteDirectoryName: 'zego_prebuilt/$folderName',
-              logsExportDirectoryName: 'zego_prebuilt/$folderName/Exported',
+              logsWriteDirectoryName: 'zego_prebuilt',
+              logsExportDirectoryName: 'zego_prebuilt/Exported',
+              useCachesDirectory: true,
               debugFileOperations: true,
               isDebuggable: true)
           .then((value) {
