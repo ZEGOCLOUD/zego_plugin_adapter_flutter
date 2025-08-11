@@ -1,8 +1,5 @@
 import 'package:flutter/services.dart';
 
-import 'package:zego_callkit/zego_callkit.dart';
-import 'package:zego_zpns/zego_zpns.dart';
-
 import 'package:zego_plugin_adapter/src/signaling/enums.dart';
 
 enum ZegoSignalingPluginInvitationMode {
@@ -842,38 +839,6 @@ class ZegoSignalingPluginThroughMessageReceivedEvent {
 }
 
 /// @nodoc
-class ZegoSignalingPluginCallKitIncomingPushReceivedEvent {
-  Map<String, dynamic> extras;
-  UUID uuid;
-
-  ZegoSignalingPluginCallKitIncomingPushReceivedEvent({
-    required this.extras,
-    required this.uuid,
-  });
-}
-
-/// @nodoc
-class ZegoSignalingPluginCallKitVoidEvent {}
-
-/// @nodoc
-class ZegoSignalingPluginCallKitActionEvent {
-  CXAction action;
-
-  ZegoSignalingPluginCallKitActionEvent({
-    required this.action,
-  });
-}
-
-/// @nodoc
-class ZegoSignalingPluginCallKitSetMutedCallActionEvent {
-  CXSetMutedCallAction action;
-
-  ZegoSignalingPluginCallKitSetMutedCallActionEvent({
-    required this.action,
-  });
-}
-
-/// @nodoc
 class ZegoSignalingPluginInRoomTextMessageResult {
   const ZegoSignalingPluginInRoomTextMessageResult({
     this.error,
@@ -1037,11 +1002,45 @@ class ZegoSignalingPluginProviderConfiguration {
 }
 
 /// @nodoc
-typedef ZegoSignalingPluginZPNsBackgroundMessageHandler
-    = ZPNsBackgroundMessageHandler;
-typedef ZegoSignalingPluginZPNsThroughMessageHandler = void Function(
-    ZPNsMessage message);
+/// Custom push source type enum to avoid dependency on zego_zpns
+enum ZegoSignalingPluginPushSourceType {
+  apns,
+  zego,
+  fcm,
+  huaWei,
+  xiaoMi,
+  oppo,
+  vivo
+}
 
 /// @nodoc
-typedef ZegoSignalingIncomingPushReceivedHandler = void Function(
-    Map extras, UUID uuid);
+/// Custom message class to avoid dependency on zego_zpns
+class ZegoSignalingPluginMessage {
+  String title = "";
+  String content = "";
+  String payload = "";
+  Map<String, Object?> extras = {};
+  ZegoSignalingPluginPushSourceType pushSourceType;
+
+  ZegoSignalingPluginMessage({required this.pushSourceType});
+
+  /// Convert from zego_zpns ZPNsMessage if needed
+  factory ZegoSignalingPluginMessage.fromZPNsMessage(dynamic zpnsMessage) {
+    // This is a placeholder - you can implement conversion logic if needed
+    return ZegoSignalingPluginMessage(
+      pushSourceType: ZegoSignalingPluginPushSourceType.zego,
+    );
+  }
+}
+
+/// @nodoc
+/// Custom background message handler to avoid dependency on zego_zpns
+/// Note: This should be compatible with the original ZPNsBackgroundMessageHandler
+typedef ZegoSignalingPluginZPNsBackgroundMessageHandler = Future<void> Function(
+    ZegoSignalingPluginMessage message);
+
+/// @nodoc
+/// Custom through message handler to avoid dependency on zego_zpns
+/// Note: This should be compatible with the original ZPNsThroughMessageHandler
+typedef ZegoSignalingPluginZPNsThroughMessageHandler = void Function(
+    ZegoSignalingPluginMessage message);

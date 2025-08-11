@@ -3,9 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:zego_callkit/zego_callkit.dart';
-
 import 'package:zego_plugin_adapter/src/defines.dart';
+import 'package:zego_plugin_adapter/src/signaling/callkit_defines.dart';
 import 'package:zego_plugin_adapter/src/signaling/defines.dart';
 import 'package:zego_plugin_adapter/src/signaling/enums.dart';
 import 'package:zego_plugin_adapter/src/signaling/errors.dart';

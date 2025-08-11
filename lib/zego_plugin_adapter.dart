@@ -7,6 +7,9 @@ import 'package:zego_plugin_adapter/src/services/adapter_service.dart';
 
 export 'src/adapter.dart';
 export 'src/services/adapter_service.dart';
+export 'src/signaling/defines.dart';
+export 'src/signaling/callkit_action_data.dart';
+export 'src/signaling/callkit_defines.dart';
 
 /// @nodoc
 class ZegoPluginAdapter {

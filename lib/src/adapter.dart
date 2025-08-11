@@ -81,8 +81,9 @@ class ZegoPluginAdapterImpl {
         tag: 'adapter',
         subTag: 'get plugin',
       );
+      return null;
     }
-    return ret! as ZegoSignalingPluginInterface;
+    return ret as ZegoSignalingPluginInterface;
   }
 
   /// callkit plugin instance
@@ -94,8 +95,9 @@ class ZegoPluginAdapterImpl {
         tag: 'adapter',
         subTag: 'get plugin',
       );
+      return null;
     }
-    return ret! as ZegoCallKitInterface;
+    return ret as ZegoCallKitInterface;
   }
 
   /// beauty plugin instance
@@ -107,8 +109,9 @@ class ZegoPluginAdapterImpl {
         tag: 'adapter',
         subTag: 'get plugin',
       );
+      return null;
     }
-    return ret! as ZegoBeautyPluginInterface;
+    return ret as ZegoBeautyPluginInterface;
   }
 
   /// get specified plugin instance

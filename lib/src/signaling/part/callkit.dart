@@ -13,7 +13,8 @@ mixin ZegoSignalingPluginCallKitAPI {
   );
 
   /// report Call Ended
-  Future<void> reportCallEnded(CXCallEndedReason endedReason, UUID uuid);
+  Future<void> reportCallEnded(
+      ZegoSignalingPluginCXCallEndedReason endedReason, String uuid);
 }
 
 /// @nodoc
@@ -54,7 +55,7 @@ mixin ZegoSignalingPluginCallKitEvent {
       getCallkitPerformSetHeldCallActionEventStream();
 
   /// Callkit Perform Set Muted Call Action Event Stream
-  Stream<ZegoSignalingPluginCallKitSetMutedCallActionEvent>
+  Stream<ZegoSignalingPluginCallKitActionEvent>
       getCallkitPerformSetMutedCallActionEventStream();
 
   /// Callkit Perform Set Group Call Action Event Stream
