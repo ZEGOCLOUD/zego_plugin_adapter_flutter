@@ -1,3 +1,9 @@
+## 2.13.10
+
+- Features
+  - Remove zpns dependency 
+  - The location for generating iOS logs has been changed to the same directory as the Zego SDK, and the folder name has been changed to ZegoUIKits 
+
 ## 2.13.9
 
 - Update zpns
