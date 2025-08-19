@@ -15,7 +15,7 @@ mixin ZegoAdapterLoggerService {
     }
 
     try {
-      await FlutterLogs.initLogs(
+      await FlutterLogsYoer.initLogs(
               logLevelsEnabled: [
                 LogLevel.INFO,
                 LogLevel.WARNING,
@@ -26,14 +26,14 @@ mixin ZegoAdapterLoggerService {
               directoryStructure: DirectoryStructure.SINGLE_FILE_FOR_DAY,
               logTypesEnabled: ['device', 'network', 'errors'],
               logFileExtension: LogFileExtension.LOG,
-              logsWriteDirectoryName: 'zego_prebuilt',
-              logsExportDirectoryName: 'zego_prebuilt/Exported',
+              logsWriteDirectoryName: 'ZegoUIKits',
+              logsExportDirectoryName: 'ZegoUIKits/Exported',
               useCachesDirectory: true,
               debugFileOperations: true,
               isDebuggable: true)
           .then((value) {
-        FlutterLogs.setDebugLevel(0);
-        FlutterLogs.logInfo(
+        FlutterLogsYoer.setDebugLevel(0);
+        FlutterLogsYoer.logInfo(
           'adapter',
           'log init done',
           '==========================================',
@@ -47,7 +47,7 @@ mixin ZegoAdapterLoggerService {
   }
 
   Future<void> clearLogs() async {
-    FlutterLogs.clearLogs();
+    FlutterLogsYoer.clearLogs();
   }
 
   static Future<void> logInfo(
@@ -60,7 +60,7 @@ mixin ZegoAdapterLoggerService {
       return;
     }
 
-    return FlutterLogs.logInfo(tag, subTag, logMessage);
+    return FlutterLogsYoer.logInfo(tag, subTag, logMessage);
   }
 
   static Future<void> logWarn(
@@ -73,7 +73,7 @@ mixin ZegoAdapterLoggerService {
       return;
     }
 
-    return FlutterLogs.logWarn(tag, subTag, logMessage);
+    return FlutterLogsYoer.logWarn(tag, subTag, logMessage);
   }
 
   static Future<void> logError(
@@ -86,7 +86,7 @@ mixin ZegoAdapterLoggerService {
       return;
     }
 
-    return FlutterLogs.logError(tag, subTag, logMessage);
+    return FlutterLogsYoer.logError(tag, subTag, logMessage);
   }
 
   static Future<void> logErrorTrace(
@@ -100,6 +100,6 @@ mixin ZegoAdapterLoggerService {
       return;
     }
 
-    return FlutterLogs.logErrorTrace(tag, subTag, logMessage, e);
+    return FlutterLogsYoer.logErrorTrace(tag, subTag, logMessage, e);
   }
 }
