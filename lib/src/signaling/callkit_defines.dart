@@ -113,35 +113,35 @@ abstract class ZegoSignalingPluginCXPlayDTMFCallAction
 /// Custom call ended reason enum to avoid dependency on zego_callkit
 enum ZegoSignalingPluginCXCallEndedReason {
   /// An error occurred while trying to service the call
-  CXCallEndedReasonFailed,
+  callEndedReasonFailed,
 
   /// The remote party explicitly ended the call
-  CXCallEndedReasonRemoteEnded,
+  callEndedReasonRemoteEnded,
 
   /// The call never started connecting and was never explicitly ended (e.g. outgoing/incoming call timeout)
-  CXCallEndedReasonUnanswered,
+  callEndedReasonUnanswered,
 
   /// The call was answered on another device
-  CXCallEndedReasonAnsweredElsewhere,
+  callEndedReasonAnsweredElsewhere,
 
   /// The call was declined on another device
-  CXCallEndedReasonDeclinedElsewhere
+  callEndedReasonDeclinedElsewhere
 }
 
 /// @nodoc
 /// Custom handle type enum to avoid dependency on zego_callkit
 enum ZegoSignalingPluginCXHandleType {
-  CXHandleTypeGeneric,
-  CXHandleTypePhoneNumber,
-  CXHandleTypeEmailAddress
+  handleTypeGeneric,
+  handleTypePhoneNumber,
+  handleTypeEmailAddress
 }
 
 /// @nodoc
 /// Custom play DTMF call action type enum to avoid dependency on zego_callkit
 enum ZegoSignalingPluginCXPlayDTMFCallActionType {
-  CXPlayDTMFCallActionTypeSingleTone,
-  CXPlayDTMFCallActionTypeSoftPause,
-  CXPlayDTMFCallActionTypeHardPause
+  playDTMFCallActionTypeSingleTone,
+  playDTMFCallActionTypeSoftPause,
+  playDTMFCallActionTypeHardPause
 }
 
 /// @nodoc
