@@ -33,7 +33,7 @@ mixin ZegoSystemService {
 
       final appLifecycleState = _parseStateFromString(stateString ?? '');
       ZegoAdapterLoggerService.logInfo(
-        'app lifecycle state:$appLifecycleState',
+        'app lifecycle state:$appLifecycleState(from $stateString)',
         tag: 'adapter',
         subTag: 'system service',
       );
@@ -85,6 +85,14 @@ mixin ZegoSystemService {
       values[appLifecycleState.toString()] = appLifecycleState;
     }
 
-    return values[state] ?? AppLifecycleState.resumed;
+    final retValue = values[state] ?? AppLifecycleState.resumed;
+
+    ZegoAdapterLoggerService.logInfo(
+      '_parseStateFromString from $state to $retValue, ',
+      tag: 'adapter',
+      subTag: 'system service',
+    );
+
+    return retValue;
   }
 }
