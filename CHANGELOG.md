@@ -1,3 +1,7 @@
+## 2.13.12
+
+- Update environment
+
 ## 2.13.11
 
 - Code Optimization
@@ -5,8 +9,8 @@
 ## 2.13.10
 
 - Features
-  - Remove zpns dependency 
-  - The location for generating iOS logs has been changed to the same directory as the Zego SDK, and the folder name has been changed to ZegoUIKits 
+  - Remove zpns dependency
+  - The location for generating iOS logs has been changed to the same directory as the Zego SDK, and the folder name has been changed to ZegoUIKits
 
 ## 2.13.9
 
@@ -16,11 +20,11 @@
 
 - add API, removeBackgroundMessageHandler
 
-## 2.13.7 
+## 2.13.7
 
 - Support for additional listening offline message handler
 
-## 2.13.6 
+## 2.13.6
 
 - add some logs
 
