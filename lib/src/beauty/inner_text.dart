@@ -113,17 +113,6 @@ class ZegoBeautyPluginInnerText {
   String filterDreamyCozily;
   String filterDreamySweet;
 
-  // Stickers
-  String stickerAnimal;
-  String stickerDive;
-  String stickerCat;
-  String stickerWatermelon;
-  String stickerDeer;
-  String stickerCoolGirl;
-  String stickerClown;
-  String stickerClawMachine;
-  String stickerSailorMoon;
-
   // background
   String backgroundGreenScreenSegmentation;
   String backgroundPortraitSegmentation;
@@ -250,17 +239,6 @@ class ZegoBeautyPluginInnerText {
     this.filterDreamySunset = 'Sunset',
     this.filterDreamyCozily = 'Cozily',
     this.filterDreamySweet = 'Sweet',
-
-    // Stickers
-    this.stickerAnimal = 'Animal',
-    this.stickerDive = 'Dive',
-    this.stickerCat = 'Cat',
-    this.stickerWatermelon = 'Watermelon',
-    this.stickerDeer = 'Deer',
-    this.stickerCoolGirl = 'Cool Girl',
-    this.stickerClown = 'Clown',
-    this.stickerClawMachine = 'Claw Machine',
-    this.stickerSailorMoon = 'Sailor Moon',
 
     // background
     this.backgroundGreenScreenSegmentation = 'Green Screen Segmentation',

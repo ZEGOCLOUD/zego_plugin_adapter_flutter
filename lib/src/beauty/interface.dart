@@ -9,8 +9,7 @@ abstract class ZegoBeautyPluginInterface with IZegoUIKitPlugin {
   /// init
   void init({
     required int appID,
-    String appSign = '',
-    String licence = '',
+    required String appSign,
   });
 
   /// uninit
