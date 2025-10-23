@@ -1,3 +1,7 @@
+## 2.14.0
+
+- Update effect plugin
+
 ## 2.13.12
 
 - Update environment
