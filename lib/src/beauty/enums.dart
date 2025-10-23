@@ -89,17 +89,6 @@ enum ZegoBeautyPluginEffectsType {
   filterDreamyCozily,
   filterDreamySweet,
 
-  // Stickers
-  stickerAnimal,
-  stickerDive,
-  stickerCat,
-  stickerWatermelon,
-  stickerDeer,
-  stickerCoolGirl,
-  stickerClown,
-  stickerClawMachine,
-  stickerSailorMoon,
-
   // background
   backgroundGreenScreenSegmentation,
   backgroundPortraitSegmentation,

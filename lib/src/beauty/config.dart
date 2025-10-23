@@ -84,12 +84,6 @@ class ZegoBeautyPluginConfig {
           ZegoBeautyPluginEffectsType.filterNaturalCreamy.index,
           ZegoBeautyPluginEffectsType.filterDreamySweet.index + 1);
 
-  /// stickers Effects Types
-  static List<ZegoBeautyPluginEffectsType> stickersEffectsTypes() =>
-      ZegoBeautyPluginEffectsType.values.sublist(
-          ZegoBeautyPluginEffectsType.stickerAnimal.index,
-          ZegoBeautyPluginEffectsType.stickerSailorMoon.index + 1);
-
   /// background Effects Types
   static List<ZegoBeautyPluginEffectsType> backgroundEffectsTypes() =>
       ZegoBeautyPluginEffectsType.values.sublist(
