@@ -1,3 +1,7 @@
+## 2.14.1
+
+- Support `face detection data` event 
+
 ## 2.14.0
 
 - Update effect plugin
