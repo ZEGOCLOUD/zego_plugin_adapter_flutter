@@ -90,9 +90,6 @@ mixin ZegoSignalingPluginRoomEvent {
   Stream<ZegoSignalingPluginRoomPropertiesBatchUpdatedEvent>
       getRoomPropertiesBatchUpdatedEventStream();
 
-  /// Room State
-  ZegoSignalingPluginRoomState getRoomState();
-
   /// Room State Changed Event Stream
   Stream<ZegoSignalingPluginRoomStateChangedEvent>
       getRoomStateChangedEventStream();
