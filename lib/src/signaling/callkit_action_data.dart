@@ -20,25 +20,23 @@ class ZegoSignalingPluginCallKitStartActionData
   final bool video;
 
   ZegoSignalingPluginCallKitStartActionData({
-    required String callUUID,
+    required super.callUUID,
     required this.handle,
     required this.contactIdentifier,
     required this.video,
-  }) : super(callUUID: callUUID);
+  });
 }
 
 /// 接听通话 Action 数据
 class ZegoSignalingPluginCallKitAnswerActionData
     extends ZegoSignalingPluginCallKitActionData {
-  ZegoSignalingPluginCallKitAnswerActionData({required String callUUID})
-      : super(callUUID: callUUID);
+  ZegoSignalingPluginCallKitAnswerActionData({required super.callUUID});
 }
 
 /// 结束通话 Action 数据
 class ZegoSignalingPluginCallKitEndActionData
     extends ZegoSignalingPluginCallKitActionData {
-  ZegoSignalingPluginCallKitEndActionData({required String callUUID})
-      : super(callUUID: callUUID);
+  ZegoSignalingPluginCallKitEndActionData({required super.callUUID});
 }
 
 /// 设置通话保持状态 Action 数据
@@ -48,9 +46,9 @@ class ZegoSignalingPluginCallKitSetHeldActionData
   final bool onHold;
 
   ZegoSignalingPluginCallKitSetHeldActionData({
-    required String callUUID,
+    required super.callUUID,
     required this.onHold,
-  }) : super(callUUID: callUUID);
+  });
 }
 
 /// 设置静音状态 Action 数据
@@ -60,16 +58,15 @@ class ZegoSignalingPluginCallKitSetMutedActionData
   final bool muted;
 
   ZegoSignalingPluginCallKitSetMutedActionData({
-    required String callUUID,
+    required super.callUUID,
     required this.muted,
-  }) : super(callUUID: callUUID);
+  });
 }
 
 /// 设置群组通话 Action 数据
 class ZegoSignalingPluginCallKitSetGroupActionData
     extends ZegoSignalingPluginCallKitActionData {
-  ZegoSignalingPluginCallKitSetGroupActionData({required String callUUID})
-      : super(callUUID: callUUID);
+  ZegoSignalingPluginCallKitSetGroupActionData({required super.callUUID});
 }
 
 /// 播放 DTMF 音调 Action 数据
@@ -82,15 +79,14 @@ class ZegoSignalingPluginCallKitPlayDTMFActionData
   final String type;
 
   ZegoSignalingPluginCallKitPlayDTMFActionData({
-    required String callUUID,
+    required super.callUUID,
     required this.digits,
     required this.type,
-  }) : super(callUUID: callUUID);
+  });
 }
 
 /// 超时执行 Action 数据
 class ZegoSignalingPluginCallKitTimedOutActionData
     extends ZegoSignalingPluginCallKitActionData {
-  ZegoSignalingPluginCallKitTimedOutActionData({required String callUUID})
-      : super(callUUID: callUUID);
+  ZegoSignalingPluginCallKitTimedOutActionData({required super.callUUID});
 }
