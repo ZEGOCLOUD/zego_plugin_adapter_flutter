@@ -1,4 +1,4 @@
-library zego_plugin_adapter;
+library;
 
 import 'package:flutter/material.dart';
 

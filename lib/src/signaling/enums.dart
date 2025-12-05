@@ -33,7 +33,9 @@ enum ZegoSignalingPluginRoomAction {
   enterFailed,
   kickedOut,
   connectTimeout,
-  kickedOutByOtherDevice
+  kickedOutByOtherDevice,
+  activeSwitch,
+  switchFailed
 }
 
 enum ZegoSignalingPluginCallUserState {

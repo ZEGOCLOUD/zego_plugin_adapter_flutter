@@ -10,6 +10,15 @@ mixin ZegoSignalingPluginRoomAPI {
     int roomDestroyDelayTime = 0,
   });
 
+  /// switch room
+  Future<ZegoSignalingPluginJoinRoomResult> switchRoom({
+    required String fromRoomID,
+    required String toRoomID,
+    required String toRoomName,
+    Map<String, String> toRoomAttributes = const {},
+    int toRoomDestroyDelayTime = 0,
+  });
+
   /// leave room
   Future<ZegoSignalingPluginLeaveRoomResult> leaveRoom({
     required String roomID,
@@ -80,9 +89,6 @@ mixin ZegoSignalingPluginRoomEvent {
   /// Room Properties Batch Updated Event Stream
   Stream<ZegoSignalingPluginRoomPropertiesBatchUpdatedEvent>
       getRoomPropertiesBatchUpdatedEventStream();
-
-  /// Room State
-  ZegoSignalingPluginRoomState getRoomState();
 
   /// Room State Changed Event Stream
   Stream<ZegoSignalingPluginRoomStateChangedEvent>
