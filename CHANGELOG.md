@@ -1,6 +1,10 @@
+## 2.14.2
+
+- add API, switchRoom
+
 ## 2.14.1
 
-- Support `face detection data` event 
+- Support `face detection data` event
 
 ## 2.14.0
 
@@ -17,8 +21,8 @@
 ## 2.13.10
 
 - Features
-  - Remove zpns dependency
-  - The location for generating iOS logs has been changed to the same directory as the Zego SDK, and the folder name has been changed to ZegoUIKits
+    - Remove zpns dependency
+    - The location for generating iOS logs has been changed to the same directory as the Zego SDK, and the folder name has been changed to ZegoUIKits
 
 ## 2.13.9
 
