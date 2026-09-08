@@ -10,49 +10,37 @@ mixin ZegoSystemService {
     AppLifecycleState.resumed,
   );
   final List<ZegoPluginAdapterMessageHandler> _messageHandlers = [];
+  AppLifecycleListener? _lifecycleListener;
 
   /// init
   void initSystemService() {
+    if (_lifecycleListener != null) {
+      return;
+    }
+
     ZegoAdapterLoggerService.logInfo(
       'init system service',
       tag: 'adapter',
       subTag: 'system service',
     );
 
-    /// Due to the fact that SystemChannels.lifecycle.setMessageHandler
-    /// can only be listened to once in the entire app,
-    /// if you also want to listen to this event,
-    /// please use ZegoUIKit().adapterService().registerMessageHandler
-    /// or ZegoPluginAdapter().service().registerMessageHandler to listen.
-    SystemChannels.lifecycle.setMessageHandler((stateString) async {
-      ZegoAdapterLoggerService.logInfo(
-        'SystemChannels.lifecycle.MessageHandler, $stateString',
-        tag: 'adapter',
-        subTag: 'system service',
-      );
-
-      final appLifecycleState = _parseStateFromString(stateString ?? '');
-      ZegoAdapterLoggerService.logInfo(
-        'app lifecycle state:$appLifecycleState(from $stateString)',
-        tag: 'adapter',
-        subTag: 'system service',
-      );
-      WidgetsBinding.instance.handleAppLifecycleStateChanged(appLifecycleState);
-
-      for (var messageHandler in _messageHandlers) {
-        messageHandler.call(appLifecycleState);
-      }
-      _messageHandlerNotifier.value = appLifecycleState;
-
-      return null;
-    });
+    /// Let Flutter own the lifecycle channel and subscribe to the states it
+    /// reports. Claiming `SystemChannels.lifecycle.setMessageHandler` here
+    /// would take the only handler the channel has and force this service to
+    /// re-dispatch the raw state through
+    /// `WidgetsBinding.handleAppLifecycleStateChanged`, which skips the
+    /// `hidden` state the framework inserts on the way to `paused`. Any
+    /// `AppLifecycleListener` in the host app - the framework's own included -
+    /// then hits its `previousState == AppLifecycleState.hidden` assertion
+    /// with "Invalid state transition from inactive to paused".
+    _messageHandlerNotifier.value =
+        WidgetsBinding.instance.lifecycleState ?? AppLifecycleState.resumed;
+    _lifecycleListener = AppLifecycleListener(
+      onStateChange: _onAppLifecycleStateChanged,
+    );
   }
 
-  /// Due to the fact that SystemChannels.lifecycle.setMessageHandler
-  /// can only be listened to once in the entire app,
-  /// if you also want to listen to this event,
-  /// please use ZegoUIKit().adapterService().registerMessageHandler
-  /// or ZegoPluginAdapter().service().registerMessageHandler to listen.
+  /// register a handler for app lifecycle state changes
   void registerMessageHandler(ZegoPluginAdapterMessageHandler handler) {
     ZegoAdapterLoggerService.logInfo(
       'register message handler:${handler.hashCode}',
@@ -79,20 +67,19 @@ mixin ZegoSystemService {
     return _messageHandlerNotifier;
   }
 
-  AppLifecycleState _parseStateFromString(String state) {
-    var values = <String, AppLifecycleState>{};
-    for (var appLifecycleState in AppLifecycleState.values) {
-      values[appLifecycleState.toString()] = appLifecycleState;
-    }
-
-    final retValue = values[state] ?? AppLifecycleState.resumed;
-
+  void _onAppLifecycleStateChanged(AppLifecycleState state) {
     ZegoAdapterLoggerService.logInfo(
-      '_parseStateFromString from $state to $retValue, ',
+      'app lifecycle state:$state',
       tag: 'adapter',
       subTag: 'system service',
     );
 
-    return retValue;
+    /// Iterate over a copy: a handler is allowed to unregister itself, or
+    /// another handler, while it is being notified.
+    for (final messageHandler
+        in List<ZegoPluginAdapterMessageHandler>.of(_messageHandlers)) {
+      messageHandler.call(state);
+    }
+    _messageHandlerNotifier.value = state;
   }
 }
